@@ -1,11 +1,11 @@
 # linux自行编译指导参考
 ## 1.尝试编译报错
-	[root@laoliu PortScanTMP]# go build PortScanTMP
-	package PortScanTMP is not in std (/usr/local/go/src/PortScanTMP)
-	[root@laoliu PortScanTMP]# go build PortScanTMP.go
-	PortScanTMP.go:18:5: no required module provides package github.com/xuri/excelize/v2:
+	[root@laoliu goPortScanTMP]# go build goPortScanTMP
+	package goPortScanTMP is not in std (/usr/local/go/src/goPortScanTMP)
+	[root@laoliu goPortScanTMP]# go build goPortScanTMP.go
+	goPortScanTMP.go:18:5: no required module provides package github.com/xuri/excelize/v2:
 	go.mod file not found in current directory or any parent directory; see 'go help modules'
-	[root@laoliu PortScanTMP]# go get github.com/xuri/excelize/v2
+	[root@laoliu goPortScanTMP]# go get github.com/xuri/excelize/v2
 	go: go.mod file not found in current directory or any parent directory.
 	'go get' is no longer supported outside a module.
 	To build and install a command, use 'go install' with a version,
@@ -13,30 +13,30 @@
 	For more information, see https://golang.org/doc/go-get-install-deprecation
 	or run 'go help get' or 'go help install'.
 ## 3.先初始化模块（必须步骤）
-	[root@laoliu PortScanTMP]# go mod init PortScanTMP
-	go: creating new go.mod: module PortScanTMP
+	[root@laoliu goPortScanTMP]# go mod init goPortScanTMP
+	go: creating new go.mod: module goPortScanTMP
 	go: to add module requirements and sums:
 		go mod tidy
-	[root@laoliu PortScanTMP]# ls
-	go.mod  PortScanTMP.go
-	[root@laoliu PortScanTMP]# more go.mod
-	module PortScanTMP
+	[root@laoliu goPortScanTMP]# ls
+	go.mod  goPortScanTMP.go
+	[root@laoliu goPortScanTMP]# more go.mod
+	module goPortScanTMP
 
 	go 1.24.7
-	[root@laoliu PortScanTMP]# go run PortScanTMP.go
-	PortScanTMP.go:18:5: no required module provides package github.com/xuri/excelize/v2; to add it:
+	[root@laoliu goPortScanTMP]# go run goPortScanTMP.go
+	goPortScanTMP.go:18:5: no required module provides package github.com/xuri/excelize/v2; to add it:
 		go get github.com/xuri/excelize/v2
   ## 2.增加代理
-	[root@laoliu PortScanTMP]# goProxy
+	[root@laoliu goPortScanTMP]# goProxy
 	godaili:https://goproxy.cn,direct
-	[root@jiankong-prod-mgmt-20250210 PortScanTMP]# cat /bin/goProxy
+	[root@jiankong-prod-mgmt-20250210 goPortScanTMP]# cat /bin/goProxy
 	godaili="https://goproxy.cn,direct"
 	go env -w GO111MODULE=on
 	go env -w GOPROXY=$godaili
 	echo godaili:$godaili
-	[root@laoliu PortScanTMP]#
+	[root@laoliu goPortScanTMP]#
   ## 3.下载依赖包
-	[root@laoliu PortScanTMP]# go get github.com/xuri/excelize/v2
+	[root@laoliu goPortScanTMP]# go get github.com/xuri/excelize/v2
 	go: added github.com/richardlehane/mscfb v1.0.4
 	go: added github.com/richardlehane/msoleps v1.0.4
 	go: added github.com/tiendc/go-deepcopy v1.6.0
@@ -47,33 +47,33 @@
 	go: added golang.org/x/net v0.40.0
 	go: added golang.org/x/text v0.25.0
   ## 4.编译
-	[root@laoliu PortScanTMP]# go build PortScanTMP.go
+	[root@laoliu goPortScanTMP]# go build goPortScanTMP.go
   ## 5.压缩(提前准备upx)
-	[root@laoliu PortScanTMP]# upx -9 PortScanTMP
+	[root@laoliu goPortScanTMP]# upx -9 goPortScanTMP
 						   Ultimate Packer for eXecutables
 							  Copyright (C) 1996 - 2024
 	UPX 4.2.2       Markus Oberhumer, Laszlo Molnar & John Reiser    Jan 3rd 2024
 
 			File size         Ratio      Format      Name
 	   --------------------   ------   -----------   -----------
-	   9858320 ->   5071440   51.44%   linux/amd64   PortScanTMP
+	   9858320 ->   5071440   51.44%   linux/amd64   goPortScanTMP
 
 	Packed 1 file.
-	[root@laoliu PortScanTMP]#
-	[root@laoliu PortScanTMP]# du -sh *
+	[root@laoliu goPortScanTMP]#
+	[root@laoliu goPortScanTMP]# du -sh *
 	4.0K	go.mod
 	4.0K	go.sum
-	4.9M	PortScanTMP
-	28K	PortScanTMP.go
+	4.9M	goPortScanTMP
+	28K	goPortScanTMP.go
   ## 6.使用说明
-	[root@laoliu PortScanTMP]# ./PortScanTMP
+	[root@laoliu goPortScanTMP]# ./goPortScanTMP
 	===========================================================
 	程序名称:TCP端口扫描小工具  版本:v1.5-20250925@奔跑的老六
 	使用示例:
-	  PortScanTMP 127.0.0.1 22
-	  PortScanTMP -ip 127.0.0.1 -p 22
-	  PortScanTMP -net 192.168.0/24 -p 22,80 -a -v -o res.xlsx
-	  PortScanTMP -l 8080,9000 -time 60 -v
+	  goPortScanTMP 127.0.0.1 22
+	  goPortScanTMP -ip 127.0.0.1 -p 22
+	  goPortScanTMP -net 192.168.0/24 -p 22,80 -a -v -o res.xlsx
+	  goPortScanTMP -l 8080,9000 -time 60 -v
 
 	参数说明:
 	  位置参数1    (IP地址,优先级低于 -ip)
@@ -92,13 +92,13 @@
 	  -time int    (监听持续时间(秒),默认30)
 	  -v           (详细日志模式)
 	===========================================================
-	[root@laoliu PortScanTMP]#
-  	[root@laoliu PortScanTMP]# ./PortScanTMP 192.168.88.88
+	[root@laoliu goPortScanTMP]#
+  	[root@laoliu goPortScanTMP]# ./goPortScanTMP 192.168.88.88
 	2025-09-26_02:19:48	192.168.88.88	22	open
-	[root@laoliu PortScanTMP]# ./PortScanTMP 192.168.88.88 88
+	[root@laoliu goPortScanTMP]# ./goPortScanTMP 192.168.88.88 88
 	2025-09-26_02:19:51	192.168.88.88	88	close
-	[root@laoliu PortScanTMP]# ./PortScanTMP 192.168.88.88 88 -o a.json
-	[root@laoliu PortScanTMP]# cat a.json
+	[root@laoliu goPortScanTMP]# ./goPortScanTMP 192.168.88.88 88 -o a.json
+	[root@laoliu goPortScanTMP]# cat a.json
 	[
 	  {
 		"time": "2025-09-26T02:20:00.815927922Z",
@@ -107,19 +107,19 @@
 		"status": "close"
 	  }
 	]
-	[root@laoliu PortScanTMP]#
+	[root@laoliu goPortScanTMP]#
   ## 6.使用说明1 默认扫描22端口 -o输出到文件,支持.json/.xlsx/.csv/.txt,必须指定文件名
-	[root@laoliu PortScanTMP]# ./PortScanTMP 192.168.88.88 -o a.txt
-	[root@laoliu PortScanTMP]# cat a.txt
+	[root@laoliu goPortScanTMP]# ./goPortScanTMP 192.168.88.88 -o a.txt
+	[root@laoliu goPortScanTMP]# cat a.txt
 	时间	IP	端口	状态
 	2025-09-26 02:21:13	192.168.88.88	22	open
-	[root@laoliu PortScanTMP]# ./PortScanTMP 192.168.88.88 -o a.csv
-	[root@laoliu PortScanTMP]# cat a.csv
+	[root@laoliu goPortScanTMP]# ./goPortScanTMP 192.168.88.88 -o a.csv
+	[root@laoliu goPortScanTMP]# cat a.csv
 	时间,IP,端口,状态
 	2025-09-26 02:21:26,192.168.88.88,22,open
-	[root@laoliu PortScanTMP]#
+	[root@laoliu goPortScanTMP]#
   ## 7.使用说明2:启动临时端口方便网络测试,支持多个端口逗号分割
-	[root@laoliu PortScanTMP]# ./PortScanTMP -l 88,99,22
+	[root@laoliu goPortScanTMP]# ./goPortScanTMP -l 88,99,22
 	2025/09/26 10:25:50 监听模式:详细输出已开启(时间≤30秒或指定了-v)
 	2025/09/26 10:25:50 启动本地监听,持续 30 秒
 	2025/09/26 10:25:50 开始监听 0.0.0.0:99,持续 30 秒
@@ -135,7 +135,7 @@
 	2025/09/26 10:25:54 端口 99 将在 26 秒后关闭
 	2025/09/26 10:25:55 端口 88 将在 25 秒后关闭
 	2025/09/26 10:25:55 端口 99 将在 25 秒后关闭
-	[root@laoliu PortScanTMP]# ./PortScanTMP -l 88,99,22 -time 10
+	[root@laoliu goPortScanTMP]# ./goPortScanTMP -l 88,99,22 -time 10
 	2025/09/26 10:28:34 监听模式:详细输出已开启(时间≤30秒或指定了-v)
 	2025/09/26 10:28:34 启动本地监听,持续 10 秒
 	2025/09/26 10:28:34 开始监听 0.0.0.0:99,持续 10 秒
@@ -165,4 +165,4 @@
 	2025/09/26 10:28:44 监听结束 0.0.0.0:99
 	2025/09/26 10:28:44 警告:接受连接失败 0.0.0.0:99:accept tcp [::]:99: use of closed network connection
 	2025/09/26 10:28:44 所有监听已结束
-	[root@laoliu PortScanTMP]#
+	[root@laoliu goPortScanTMP]#
