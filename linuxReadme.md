@@ -72,14 +72,14 @@
 	使用示例:
 	  PortScanTMP 127.0.0.1 22
 	  PortScanTMP -ip 127.0.0.1 -p 22
-	  PortScanTMP -net 10.1.93.0/24 -p 22,80 -a -v -o res.xlsx
+	  PortScanTMP -net 192.168.0/24 -p 22,80 -a -v -o res.xlsx
 	  PortScanTMP -l 8080,9000 -time 60 -v
 
 	参数说明:
 	  位置参数1    (IP地址,优先级低于 -ip)
 	  位置参数2    (端口,优先级低于 -p,默认22)
 	  -ip string   (IP地址,多个用逗号分隔)
-	  -net string  (网段,如:10.1.93.0/24)
+	  -net string  (网段,如:192.168.0/24)
 	  -p string    (端口/范围,如:22,1-100,默认22)
 	  -t duration  (超时时间,默认2秒)
 	  -n int       (重试次数,默认1)
