@@ -1,12 +1,12 @@
-# PortScanTMP
+# gogoPortScanTMP
 * 运维人员:端口临时扫描工具,一款多功能TCP端口扫描与临时测试工具，集高效扫描、实时监听、多格式输出于一体，兼顾专业级性能与易用性。
 * 程序名称:TCP端口扫描小工具
 * 版本:v1.5-20250925@奔跑的老六**
 ## 使用示例:
-	PortScanTMP 127.0.0.1 22
-	PortScanTMP -ip 127.0.0.1 -p 22
-	PortScanTMP -net 192.168.88.0/24 -p 22,80 -a -v -o res.xlsx
-	PortScanTMP -l 8080,9000 -time 60 -v
+	goPortScanTMP 127.0.0.1 22
+	goPortScanTMP -ip 127.0.0.1 -p 22
+	goPortScanTMP -net 192.168.88.0/24 -p 22,80 -a -v -o res.xlsx
+	goPortScanTMP -l 8080,9000 -time 60 -v
 ## 参数说明:
 	位置参数1    (IP地址,优先级低于 -ip)
 	位置参数2    (端口,优先级低于 -p,默认22)
